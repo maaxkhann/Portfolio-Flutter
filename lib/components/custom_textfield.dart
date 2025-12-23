@@ -1,0 +1,57 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import '../shared/constants/app_text_style.dart';
+
+class CustomTextField extends StatelessWidget {
+  final String heading;
+  final String hintText;
+  final double width;
+  final dynamic maxLines;
+  const CustomTextField({
+    super.key,
+    required this.heading,
+    required this.hintText,
+    this.width = 350,
+    this.maxLines = 1,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      spacing: 5,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(heading, style: AppTextStyle.openSans(fontSize: 16)),
+        SizedBox(
+          width: width,
+          child: TextFormField(
+            maxLines: maxLines,
+            // validator: (value) {
+            //   if (RegExp('\\bmaaz\\b', caseSensitive: false).hasMatch(value!)) {
+            //     return 'Match found';
+            //   }
+            // },
+            //  autovalidateMode: AutovalidateMode.onUserInteraction,
+            decoration: InputDecoration(
+              hintText: hintText,
+              helperStyle: GoogleFonts.poppins(fontSize: 14),
+              focusedErrorBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.red),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.teal),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.tealAccent, width: 2),
+                borderRadius: BorderRadius.circular(15),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
