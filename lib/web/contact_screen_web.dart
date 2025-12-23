@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:portfolio/shared/constants/app_text_style.dart';
 import 'package:portfolio/shared/extensions/sized_box.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../components/custom_textfield.dart';
 import '../components/tabs_web.dart';
 
 class ContactScreenWeb extends StatefulWidget {
@@ -106,7 +108,59 @@ class _ContactScreenWebState extends State<ContactScreenWeb> {
             ),
           ];
         },
-        body: SingleChildScrollView(),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              30.spaceY,
+              Text(
+                'Contact me',
+                style: AppTextStyle.openSans(
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              20.spaceY,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                spacing: 15,
+                children: [
+                  CustomTextField(
+                    text: 'First Name',
+                    hintText: 'Please enter your first name',
+                  ),
+                  CustomTextField(
+                    text: 'Last Name',
+                    hintText: 'Please enter your last name',
+                  ),
+                ],
+              ),
+              15.spaceY,
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                spacing: 15,
+                children: [
+                  CustomTextField(
+                    text: 'Email',
+                    hintText: 'Please enter your email address',
+                  ),
+                  CustomTextField(
+                    text: 'Phone number',
+                    hintText: 'Please enter your phone number',
+                  ),
+                ],
+              ),
+              15.spaceY,
+              CustomTextField(
+                text: 'Message',
+                hintText: 'Please enter your message',
+                containerWidth: width / 1.3,
+                maxLines: 10,
+              ),
+              15.spaceY,
+            ],
+          ),
+        ),
       ),
     );
   }
