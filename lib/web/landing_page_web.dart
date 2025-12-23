@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:portfolio/shared/constants/app_text_style.dart';
 import 'package:portfolio/shared/extensions/sized_box.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../components/animated_card_web.dart';
+import '../components/animated_card.dart';
 import '../components/custom_textfield.dart';
 import '../components/tabs_web.dart';
 
@@ -85,15 +85,15 @@ class _LandingPageWebState extends State<LandingPageWeb> {
         title: Row(
           children: [
             Spacer(flex: 2),
-            TabsWeb(title: 'Home'),
+            TabsWeb(title: 'Home', route: '/'),
             Spacer(),
-            TabsWeb(title: 'Works'),
+            TabsWeb(title: 'Works', route: '/works'),
             Spacer(),
-            TabsWeb(title: 'Blog'),
+            TabsWeb(title: 'Blog', route: '/blog'),
             Spacer(),
-            TabsWeb(title: 'About'),
+            TabsWeb(title: 'About', route: '/about'),
             Spacer(),
-            TabsWeb(title: 'Contact'),
+            TabsWeb(title: 'Contact', route: '/contact'),
             Spacer(),
           ],
         ),
@@ -351,16 +351,16 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    AnimatedCardWeb(
+                    AnimatedCard(
                       imagePath: 'assets/images/webL.png',
                       text: 'Web development',
                     ),
-                    AnimatedCardWeb(
+                    AnimatedCard(
                       imagePath: 'assets/images/app.png',
                       text: 'App development',
                       reverse: true,
                     ),
-                    AnimatedCardWeb(
+                    AnimatedCard(
                       imagePath: 'assets/images/firebase.png',
                       text: 'Firebase',
                     ),
@@ -388,11 +388,11 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                   spacing: 15,
                   children: [
                     CustomTextField(
-                      heading: 'First Name',
+                      text: 'First Name',
                       hintText: 'Please enter your first name',
                     ),
                     CustomTextField(
-                      heading: 'Last Name',
+                      text: 'Last Name',
                       hintText: 'Please enter your last name',
                     ),
                   ],
@@ -403,20 +403,20 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                   spacing: 15,
                   children: [
                     CustomTextField(
-                      heading: 'Email',
+                      text: 'Email',
                       hintText: 'Please enter your email address',
                     ),
                     CustomTextField(
-                      heading: 'Phone number',
+                      text: 'Phone number',
                       hintText: 'Please enter your phone number',
                     ),
                   ],
                 ),
 
                 CustomTextField(
-                  heading: 'Message',
+                  text: 'Message',
                   hintText: 'Please enter your message',
-                  width: width / 1.3,
+                  containerWidth: width / 1.3,
                   maxLines: 10,
                 ),
               ],

@@ -2,25 +2,29 @@ import 'package:flutter/material.dart';
 
 import '../shared/constants/app_text_style.dart';
 
-class AnimatedCardWeb extends StatefulWidget {
+class AnimatedCard extends StatefulWidget {
   final String imagePath;
   final String text;
   final BoxFit? fit;
   final bool reverse;
+  final double height;
+  final double width;
 
-  const AnimatedCardWeb({
+  const AnimatedCard({
     super.key,
     required this.imagePath,
     required this.text,
     this.fit,
     this.reverse = false,
+    this.height = 200,
+    this.width = 200,
   });
 
   @override
-  State<AnimatedCardWeb> createState() => _AnimatedCardWebState();
+  State<AnimatedCard> createState() => _AnimatedCardState();
 }
 
-class _AnimatedCardWebState extends State<AnimatedCardWeb>
+class _AnimatedCardState extends State<AnimatedCard>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _animation;
@@ -62,9 +66,9 @@ class _AnimatedCardWebState extends State<AnimatedCardWeb>
             children: [
               Image.asset(
                 widget.imagePath,
-                width: 200,
-                height: 200,
-                fit: widget.fit ?? BoxFit.contain,
+                width: widget.width,
+                height: widget.height,
+                fit: widget.fit,
               ),
               Text(
                 widget.text,

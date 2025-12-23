@@ -4,15 +4,15 @@ import 'package:google_fonts/google_fonts.dart';
 import '../shared/constants/app_text_style.dart';
 
 class CustomTextField extends StatelessWidget {
-  final String heading;
+  final String text;
   final String hintText;
-  final double width;
+  final double containerWidth;
   final dynamic maxLines;
   const CustomTextField({
     super.key,
-    required this.heading,
+    required this.text,
     required this.hintText,
-    this.width = 350,
+    this.containerWidth = 350,
     this.maxLines = 1,
   });
 
@@ -22,9 +22,9 @@ class CustomTextField extends StatelessWidget {
       spacing: 5,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(heading, style: AppTextStyle.openSans(fontSize: 16)),
+        Text(text, style: AppTextStyle.openSans(fontSize: 16)),
         SizedBox(
-          width: width,
+          width: containerWidth,
           child: TextFormField(
             maxLines: maxLines,
             // validator: (value) {
