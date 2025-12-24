@@ -158,6 +158,24 @@ class _ContactScreenWebState extends State<ContactScreenWeb> {
                 maxLines: 10,
               ),
               15.spaceY,
+              MaterialButton(
+                height: 60,
+                minWidth: width / 2.2,
+                color: Colors.tealAccent,
+                elevation: 20,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                onPressed: () {},
+                child: Text(
+                  'Submit',
+                  style: AppTextStyle.openSans(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              15.spaceY,
             ],
           ),
         ),

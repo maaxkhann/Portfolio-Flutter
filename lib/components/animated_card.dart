@@ -4,7 +4,7 @@ import '../shared/constants/app_text_style.dart';
 
 class AnimatedCard extends StatefulWidget {
   final String imagePath;
-  final String text;
+  final String? text;
   final BoxFit? fit;
   final bool reverse;
   final double height;
@@ -13,7 +13,7 @@ class AnimatedCard extends StatefulWidget {
   const AnimatedCard({
     super.key,
     required this.imagePath,
-    required this.text,
+    this.text,
     this.fit,
     this.reverse = false,
     this.height = 200,
@@ -70,13 +70,14 @@ class _AnimatedCardState extends State<AnimatedCard>
                 height: widget.height,
                 fit: widget.fit,
               ),
-              Text(
-                widget.text,
-                style: AppTextStyle.openSans(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
+              if (widget.text != null)
+                Text(
+                  widget.text!,
+                  style: AppTextStyle.openSans(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
             ],
           ),
         ),

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/mobile/about_screeen_mobile.dart';
+import 'package:portfolio/mobile/blog_screen_mobile.dart';
 import 'package:portfolio/mobile/contact_screen_mobile.dart';
 import 'package:portfolio/mobile/landing_page_mobile.dart';
+import 'package:portfolio/web/about_screen_web.dart';
+import 'package:portfolio/web/blog_screen_web.dart';
 import 'package:portfolio/web/contact_screen_web.dart';
 import 'package:portfolio/web/landing_page_web.dart';
 
@@ -28,6 +32,32 @@ class Routes {
                 return ContactScreenWeb();
               } else {
                 return ContactScreenMobile();
+              }
+            },
+          ),
+          settings: settings,
+        );
+      case '/about':
+        return MaterialPageRoute(
+          builder: (_) => LayoutBuilder(
+            builder: (context, constraints) {
+              if (constraints.maxWidth > 800) {
+                return AboutScreenWeb();
+              } else {
+                return AboutScreeenMobile();
+              }
+            },
+          ),
+          settings: settings,
+        );
+      case '/blog':
+        return MaterialPageRoute(
+          builder: (_) => LayoutBuilder(
+            builder: (context, constraints) {
+              if (constraints.maxWidth > 800) {
+                return BlogScreenWeb();
+              } else {
+                return BlogScreenMobile();
               }
             },
           ),

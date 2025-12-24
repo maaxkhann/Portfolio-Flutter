@@ -52,4 +52,21 @@ class AppTextStyle {
       decorationColor: color,
     );
   }
+
+  /// Abel
+  static TextStyle abel({
+    FontWeight fontWeight = FontWeight.normal,
+    double fontSize = 14,
+    Color color = Colors.black,
+    TextOverflow overflow = TextOverflow.ellipsis,
+    bool underline = false,
+  }) {
+    return GoogleFonts.abel(
+      fontSize: fontSize,
+      fontWeight: fontWeight,
+      color: color,
+      decoration: underline ? TextDecoration.underline : TextDecoration.none,
+      decorationColor: color,
+    );
+  }
 }

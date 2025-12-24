@@ -83,7 +83,6 @@ class _LandingPageWebState extends State<LandingPageWeb> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(color: Colors.black, size: 25),
-        automaticallyImplyLeading: false,
         title: Row(
           children: [
             Spacer(flex: 2),

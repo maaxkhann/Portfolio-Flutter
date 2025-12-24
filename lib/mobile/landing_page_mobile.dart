@@ -119,19 +119,19 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
       body: ListView(
         children: [
           //Intro first section
+          CircleAvatar(
+            radius: 117,
+            backgroundColor: Colors.tealAccent,
+            child: CircleAvatar(
+              radius: 110,
+              backgroundColor: Colors.white,
+              backgroundImage: AssetImage('assets/images/profile.png'),
+            ),
+          ),
           Padding(
-            padding: const EdgeInsets.only(left: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               children: [
-                CircleAvatar(
-                  radius: 117,
-                  backgroundColor: Colors.tealAccent,
-                  child: CircleAvatar(
-                    radius: 110,
-                    backgroundColor: Colors.white,
-                    backgroundImage: AssetImage('assets/images/profile.png'),
-                  ),
-                ),
                 25.spaceY,
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -210,9 +210,9 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
           90.spaceY,
           //About me second section
           Padding(
-            padding: EdgeInsetsGeometry.only(left: 20),
+            padding: EdgeInsetsGeometry.symmetric(horizontal: 20),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
