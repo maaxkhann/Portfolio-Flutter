@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/components/custom_textfield.dart';
-import 'package:portfolio/components/tabs_mobile.dart';
+import 'package:portfolio/components/teal_container.dart';
+import 'package:portfolio/mobile/widgets/tabs_mobile.dart';
 import 'package:portfolio/shared/constants/app_text_style.dart';
 import 'package:portfolio/shared/extensions/sized_box.dart';
+import 'package:portfolio/shared/helpers/url_helper.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../components/animated_card.dart';
+import '../components/contact_info.dart';
+import '../components/custom_button.dart';
+import '../components/intro_text.dart';
+import '../components/profile_avatar.dart';
 
 class LandingPageMobile extends StatefulWidget {
   const LandingPageMobile({super.key});
@@ -16,30 +22,6 @@ class LandingPageMobile extends StatefulWidget {
 }
 
 class _LandingPageMobileState extends State<LandingPageMobile> {
-  Widget tealContainer(String text) {
-    return Container(
-      padding: EdgeInsets.all(7),
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.tealAccent,
-          style: BorderStyle.solid,
-          width: 2,
-        ),
-        borderRadius: BorderRadius.circular(5),
-      ),
-      child: Text(text, style: AppTextStyle.openSans(fontSize: 15)),
-    );
-  }
-
-  Future openUrl(String url) async {
-    if (await canLaunchUrl(Uri.parse(url))) {
-      await launchUrl(Uri.parse(url));
-    } else {
-      throw 'Could not launch $url';
-    }
-    return;
-  }
-
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -81,7 +63,7 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
               children: [
                 IconButton(
                   onPressed: () async {
-                    openUrl(
+                    UrlHelper.openUrl(
                       'https://www.instagram.com/maaz.514?utm_source=qr&igsh=aHh1cDV0bDE2eW11',
                     );
                   },
@@ -93,7 +75,7 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
                 ),
                 IconButton(
                   onPressed: () async {
-                    openUrl('https://x.com/MaazKha65069365');
+                    UrlHelper.openUrl('https://x.com/MaazKha65069365');
                   },
                   icon: SvgPicture.asset(
                     'assets/images/twitter.svg',
@@ -103,7 +85,7 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
                 ),
                 IconButton(
                   onPressed: () async {
-                    openUrl('https://github.com/maaxkhann');
+                    UrlHelper.openUrl('https://github.com/maaxkhann');
                   },
                   icon: SvgPicture.asset(
                     'assets/images/github.svg',
@@ -119,93 +101,21 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
       body: ListView(
         children: [
           //Intro first section
-          CircleAvatar(
-            radius: 117,
-            backgroundColor: Colors.tealAccent,
-            child: CircleAvatar(
-              radius: 110,
-              backgroundColor: Colors.white,
-              backgroundImage: AssetImage('assets/images/profile.png'),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              children: [
-                25.spaceY,
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+          Column(
+            children: [
+              const ProfileAvatar(outerRadius: 117, innerRadius: 110),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
                   children: [
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 10,
-                        horizontal: 20,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.tealAccent,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20),
-                          bottomRight: Radius.circular(20),
-                        ),
-                      ),
-                      child: Text(
-                        'Hello I am',
-                        style: AppTextStyle.openSans(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    Text(
-                      'Maaz Parvez',
-                      style: AppTextStyle.openSans(
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      'Flutter Developer',
-                      style: AppTextStyle.openSans(fontSize: 20),
-                    ),
+                    25.spaceY,
+                    const IntroText(nameSize: 40, roleSize: 20),
+                    15.spaceY,
+                    const ContactInfo(isCentered: true),
                   ],
                 ),
-                15.spaceY,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Wrap(
-                      direction: Axis.vertical,
-                      spacing: 3,
-                      children: [
-                        Icon(Icons.email),
-                        Icon(Icons.call),
-                        Icon(Icons.location_pin),
-                      ],
-                    ),
-                    40.spaceX,
-                    Wrap(
-                      direction: Axis.vertical,
-                      spacing: 9,
-                      children: [
-                        Text(
-                          'maazkk514@gmail.com',
-                          style: AppTextStyle.openSans(fontSize: 15),
-                        ),
-                        Text(
-                          '0310-3232055',
-                          style: AppTextStyle.openSans(fontSize: 15),
-                        ),
-                        Text(
-                          'Charsadda',
-                          style: AppTextStyle.openSans(fontSize: 15),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
           90.spaceY,
           //About me second section
@@ -239,10 +149,10 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
                   spacing: 7,
                   runSpacing: 7,
                   children: [
-                    tealContainer('Flutter'),
-                    tealContainer('Firebase'),
-                    tealContainer('Android'),
-                    tealContainer('Windows'),
+                    TealContainer(text: 'Flutter'),
+                    TealContainer(text: 'Firebase'),
+                    TealContainer(text: 'Android'),
+                    TealContainer(text: 'Windows'),
                   ],
                 ),
               ],
@@ -318,22 +228,10 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
                     hintText: 'Please type message',
                     maxLines: 10,
                   ),
-                  MaterialButton(
-                    height: 60,
-                    minWidth: width / 2.2,
-                    color: Colors.tealAccent,
-                    elevation: 20,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+                  CustomButton(
+                    width: width / 2.2,
+                    text: 'Submit',
                     onPressed: () {},
-                    child: Text(
-                      'Submit',
-                      style: AppTextStyle.openSans(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
                   ),
                 ],
               ),

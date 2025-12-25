@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:portfolio/components/animated_card.dart';
+import 'package:portfolio/components/teal_container.dart';
 import 'package:portfolio/shared/extensions/sized_box.dart';
+import 'package:portfolio/shared/helpers/url_helper.dart';
+import 'package:portfolio/web/widgets/custom_web_appbar.dart';
+import 'package:portfolio/web/widgets/custom_web_drawer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../components/tabs_web.dart';
+import 'widgets/tabs_web.dart';
 import '../shared/constants/app_text_style.dart';
 
 class AboutScreenWeb extends StatefulWidget {
@@ -15,103 +19,13 @@ class AboutScreenWeb extends StatefulWidget {
 }
 
 class _AboutScreenWebState extends State<AboutScreenWeb> {
-  Widget tealContainer(String text) {
-    return Container(
-      padding: EdgeInsets.all(7),
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.tealAccent,
-          style: BorderStyle.solid,
-          width: 2,
-        ),
-        borderRadius: BorderRadius.circular(5),
-      ),
-      child: Text(text, style: AppTextStyle.openSans(fontSize: 15)),
-    );
-  }
-
-  Future openUrl(String url) async {
-    if (await canLaunchUrl(Uri.parse(url))) {
-      await launchUrl(Uri.parse(url));
-    } else {
-      throw 'Could not launch $url';
-    }
-    return;
-  }
-
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
-      drawer: Drawer(
-        backgroundColor: Colors.white,
-        child: Column(
-          spacing: 15,
-          children: [
-            CircleAvatar(
-              radius: 72,
-              backgroundColor: Colors.tealAccent,
-              child: CircleAvatar(
-                radius: 70,
-                backgroundColor: Colors.white,
-                backgroundImage: AssetImage('assets/images/profile.png'),
-              ),
-            ),
-            Text(
-              'Maaz Parvez',
-              style: AppTextStyle.openSans(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                IconButton(
-                  onPressed: () => openUrl(
-                    'https://www.instagram.com/maaz.514?utm_source=qr&igsh=aHh1cDV0bDE2eW11',
-                  ),
-                  icon: SvgPicture.asset(
-                    'assets/images/instagram.svg',
-                    width: 35,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () => openUrl('https://x.com/MaazKha65069365'),
-                  icon: SvgPicture.asset(
-                    'assets/images/twitter.svg',
-                    width: 35,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () => openUrl('https://github.com/maaxkhann'),
-                  icon: SvgPicture.asset('assets/images/github.svg', width: 35),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black, size: 25),
-        title: Row(
-          children: [
-            Spacer(flex: 2),
-            TabsWeb(title: 'Home', route: '/'),
-            Spacer(),
-            TabsWeb(title: 'Works', route: '/works'),
-            Spacer(),
-            TabsWeb(title: 'Blog', route: '/blog'),
-            Spacer(),
-            TabsWeb(title: 'About', route: '/about'),
-            Spacer(),
-            TabsWeb(title: 'Contact', route: '/contact'),
-            Spacer(),
-          ],
-        ),
-      ),
+      drawer: CustomWebDrawer(),
+      appBar: CustomWebAppBar(),
       body: ListView(
         children: [
           //About me first section
@@ -150,11 +64,11 @@ class _AboutScreenWebState extends State<AboutScreenWeb> {
                     Row(
                       spacing: 7,
                       children: [
-                        tealContainer('Flutter'),
-                        tealContainer('Firebase'),
-                        tealContainer('Android'),
-                        tealContainer('IOS'),
-                        tealContainer('Windows'),
+                        TealContainer(text: 'Flutter'),
+                        TealContainer(text: 'Firebase'),
+                        TealContainer(text: 'Android'),
+                        TealContainer(text: 'IOS'),
+                        TealContainer(text: 'Windows'),
                       ],
                     ),
                   ],

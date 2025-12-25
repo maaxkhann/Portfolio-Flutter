@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:portfolio/components/animated_card.dart';
+import 'package:portfolio/components/profile_avatar.dart';
+import 'package:portfolio/mobile/widgets/custom_drawer_mobile.dart';
 import 'package:portfolio/shared/extensions/sized_box.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../components/tabs_mobile.dart';
+import 'widgets/tabs_mobile.dart';
 import '../shared/constants/app_text_style.dart';
 
 class AboutScreeenMobile extends StatefulWidget {
@@ -51,88 +53,14 @@ class _AboutScreeenMobileState extends State<AboutScreeenMobile> {
           elevation: 0,
           iconTheme: IconThemeData(color: Colors.black, size: 35),
         ),
-        endDrawer: Drawer(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              DrawerHeader(
-                child: Container(
-                  // padding: EdgeInsets.only(bottom: 20),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(width: 2, color: Colors.black),
-                  ),
-                  child: Image.asset('assets/images/profile.png'),
-                ),
-              ),
-              TabsMobile(text: 'Home', route: '/'),
-              20.spaceY,
-              TabsMobile(text: 'Works', route: '/works'),
-              20.spaceY,
-              TabsMobile(text: 'Blog', route: '/blog'),
-              20.spaceY,
-              TabsMobile(text: 'About', route: '/about'),
-              20.spaceY,
-              TabsMobile(text: 'Contact', route: '/contact'),
-              40.spaceY,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  IconButton(
-                    onPressed: () async {
-                      openUrl(
-                        'https://www.instagram.com/maaz.514?utm_source=qr&igsh=aHh1cDV0bDE2eW11',
-                      );
-                    },
-                    icon: SvgPicture.asset(
-                      'assets/images/instagram.svg',
-                      color: Colors.black,
-                      width: 35,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () async {
-                      openUrl('https://x.com/MaazKha65069365');
-                    },
-                    icon: SvgPicture.asset(
-                      'assets/images/twitter.svg',
-                      color: Colors.black,
-                      width: 35,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () async {
-                      openUrl('https://github.com/maaxkhann');
-                    },
-                    icon: SvgPicture.asset(
-                      'assets/images/github.svg',
-                      color: Colors.black,
-                      width: 35,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
+        endDrawer: CustomDrawerMobile(),
         body: ListView(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
           children: [
             CircleAvatar(
               radius: 117,
               backgroundColor: Colors.tealAccent,
-              child: CircleAvatar(
-                radius: 113,
-                backgroundColor: Colors.black,
-                child: CircleAvatar(
-                  radius: 110,
-                  backgroundColor: Colors.white,
-                  child: Image.asset(
-                    'assets/images/profile.png',
-                    filterQuality: FilterQuality.high,
-                  ),
-                ),
-              ),
+              child: ProfileAvatar(outerRadius: 113, innerRadius: 110),
             ),
             20.spaceY,
             Padding(

@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:portfolio/shared/constants/app_text_style.dart';
 import 'package:portfolio/shared/extensions/sized_box.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../components/animated_card.dart';
+import '../components/contact_info.dart';
+import '../components/custom_button.dart';
 import '../components/custom_textfield.dart';
-import '../components/tabs_web.dart';
+import '../components/intro_text.dart';
+import '../components/profile_avatar.dart';
+import '../components/teal_container.dart';
+import 'widgets/custom_web_appbar.dart';
+import 'widgets/custom_web_drawer.dart';
 
 class LandingPageWeb extends StatefulWidget {
   const LandingPageWeb({super.key});
@@ -16,89 +20,14 @@ class LandingPageWeb extends StatefulWidget {
 }
 
 class _LandingPageWebState extends State<LandingPageWeb> {
-  Future openUrl(String url) async {
-    if (await canLaunchUrl(Uri.parse(url))) {
-      await launchUrl(Uri.parse(url));
-    } else {
-      throw 'Could not launch $url';
-    }
-    return;
-  }
-
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
-      drawer: Drawer(
-        backgroundColor: Colors.white,
-        child: Column(
-          spacing: 15,
-          children: [
-            CircleAvatar(
-              radius: 72,
-              backgroundColor: Colors.tealAccent,
-              child: CircleAvatar(
-                radius: 70,
-                backgroundColor: Colors.white,
-                backgroundImage: AssetImage('assets/images/profile.png'),
-              ),
-            ),
-            Text(
-              'Maaz Parvez',
-              style: AppTextStyle.openSans(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                IconButton(
-                  onPressed: () => openUrl(
-                    'https://www.instagram.com/maaz.514?utm_source=qr&igsh=aHh1cDV0bDE2eW11',
-                  ),
-                  icon: SvgPicture.asset(
-                    'assets/images/instagram.svg',
-                    width: 35,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () => openUrl('https://x.com/MaazKha65069365'),
-                  icon: SvgPicture.asset(
-                    'assets/images/twitter.svg',
-                    width: 35,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () => openUrl('https://github.com/maaxkhann'),
-                  icon: SvgPicture.asset('assets/images/github.svg', width: 35),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black, size: 25),
-        title: Row(
-          children: [
-            Spacer(flex: 2),
-            TabsWeb(title: 'Home', route: '/'),
-            Spacer(),
-            TabsWeb(title: 'Works', route: '/works'),
-            Spacer(),
-            TabsWeb(title: 'Blog', route: '/blog'),
-            Spacer(),
-            TabsWeb(title: 'About', route: '/about'),
-            Spacer(),
-            TabsWeb(title: 'Contact', route: '/contact'),
-            Spacer(),
-          ],
-        ),
-      ),
+      drawer: CustomWebDrawer(),
+      appBar: CustomWebAppBar(),
       body: ListView(
         children: [
           //Home
@@ -106,94 +35,17 @@ class _LandingPageWebState extends State<LandingPageWeb> {
             height: height - 56,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 10,
-                        horizontal: 20,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.tealAccent,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20),
-                          bottomRight: Radius.circular(20),
-                        ),
-                      ),
-                      child: Text(
-                        'Hello I\'am',
-                        style: AppTextStyle.openSans(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
+                    const IntroText(nameSize: 55, roleSize: 30),
                     15.spaceY,
-                    Text(
-                      'Maaz Parvez',
-                      style: AppTextStyle.openSans(
-                        fontSize: 55,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      'Flutter Developer',
-                      style: AppTextStyle.openSans(fontSize: 30),
-                    ),
-                    15.spaceY,
-
-                    Row(
-                      spacing: 20,
-                      children: [
-                        Icon(Icons.email),
-                        Text(
-                          'maazkk514@gmail.com',
-                          style: AppTextStyle.openSans(fontSize: 15),
-                        ),
-                      ],
-                    ),
-                    10.spaceY,
-                    Row(
-                      spacing: 20,
-                      children: [
-                        Icon(Icons.call),
-                        Text(
-                          '03103232055',
-                          style: AppTextStyle.openSans(fontSize: 15),
-                        ),
-                      ],
-                    ),
-                    10.spaceY,
-                    Row(
-                      spacing: 20,
-                      children: [
-                        Icon(Icons.location_pin),
-                        Text(
-                          'Charsadda',
-                          style: AppTextStyle.openSans(fontSize: 15),
-                        ),
-                      ],
-                    ),
+                    const ContactInfo(isCentered: false),
                   ],
                 ),
-                CircleAvatar(
-                  radius: 147,
-                  backgroundColor: Colors.tealAccent,
-                  child: CircleAvatar(
-                    radius: 143,
-                    backgroundColor: Colors.black,
-                    child: CircleAvatar(
-                      radius: 140,
-                      backgroundColor: Colors.white,
-                      backgroundImage: AssetImage('assets/images/profile.png'),
-                    ),
-                  ),
-                ),
+                const ProfileAvatar(outerRadius: 147, innerRadius: 140),
               ],
             ),
           ),
@@ -236,96 +88,11 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                         child: Row(
                           spacing: 7,
                           children: [
-                            Container(
-                              padding: EdgeInsets.all(7),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.tealAccent,
-                                  width: 2,
-                                  style: BorderStyle.solid,
-                                ),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Text(
-                                'FLutter',
-                                style: AppTextStyle.openSans(fontSize: 15),
-                              ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.all(7),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.tealAccent,
-                                  width: 2,
-                                  style: BorderStyle.solid,
-                                ),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Text(
-                                'Firebase',
-                                style: AppTextStyle.openSans(fontSize: 15),
-                              ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.all(7),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.tealAccent,
-                                  width: 2,
-                                  style: BorderStyle.solid,
-                                ),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Text(
-                                'Android',
-                                style: AppTextStyle.openSans(fontSize: 15),
-                              ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.all(7),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.tealAccent,
-                                  width: 2,
-                                  style: BorderStyle.solid,
-                                ),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Text(
-                                'IOS',
-                                style: AppTextStyle.openSans(fontSize: 15),
-                              ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.all(7),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.tealAccent,
-                                  width: 2,
-                                  style: BorderStyle.solid,
-                                ),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Text(
-                                'Web',
-                                style: AppTextStyle.openSans(fontSize: 15),
-                              ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.all(7),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.tealAccent,
-                                  width: 2,
-                                  style: BorderStyle.solid,
-                                ),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Text(
-                                'Windows',
-                                style: AppTextStyle.openSans(fontSize: 15),
-                              ),
-                            ),
+                            TealContainer(text: 'Flutter'),
+                            TealContainer(text: 'Firebase'),
+                            TealContainer(text: 'Android'),
+                            TealContainer(text: 'IOS'),
+                            TealContainer(text: 'Windows'),
                           ],
                         ),
                       ),
@@ -420,6 +187,14 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                   containerWidth: width / 1.3,
                   maxLines: 10,
                 ),
+                10.spaceY,
+                CustomButton(
+                  width: width / 2.2,
+                  text: 'Submit',
+                  onPressed: () {},
+                ),
+
+                20.spaceY,
               ],
             ),
           ),

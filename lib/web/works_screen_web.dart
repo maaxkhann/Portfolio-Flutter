@@ -3,9 +3,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:portfolio/components/animated_card.dart';
 import 'package:portfolio/shared/constants/app_text_style.dart';
 import 'package:portfolio/shared/extensions/sized_box.dart';
+import 'package:portfolio/web/widgets/custom_web_drawer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../components/tabs_web.dart';
+import 'widgets/tabs_web.dart';
 
 class WorksScreenWeb extends StatefulWidget {
   const WorksScreenWeb({super.key});
@@ -15,66 +16,11 @@ class WorksScreenWeb extends StatefulWidget {
 }
 
 class _WorksScreenWebState extends State<WorksScreenWeb> {
-  Future openUrl(String url) async {
-    if (await canLaunchUrl(Uri.parse(url))) {
-      await launchUrl(Uri.parse(url));
-    } else {
-      throw 'Could not launch $url';
-    }
-    return;
-  }
-
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
-      drawer: Drawer(
-        backgroundColor: Colors.white,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CircleAvatar(
-              radius: 72,
-              backgroundColor: Colors.tealAccent,
-              child: CircleAvatar(
-                radius: 70,
-                backgroundImage: AssetImage('assets/images/profile.png'),
-              ),
-            ),
-            15.spaceY,
-            Text(
-              'Maaz Parvez',
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-            ),
-            15.spaceY,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                IconButton(
-                  onPressed: () => openUrl(
-                    'https://www.instagram.com/maaz.514?utm_source=qr&igsh=aHh1cDV0bDE2eW11',
-                  ),
-                  icon: SvgPicture.asset(
-                    'assets/images/instagram.svg',
-                    width: 35,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () => openUrl('https://x.com/MaazKha65069365'),
-                  icon: SvgPicture.asset(
-                    'assets/images/twitter.svg',
-                    width: 35,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () => openUrl('https://github.com/maaxkhann'),
-                  icon: SvgPicture.asset('assets/images/github.svg', width: 35),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
+      drawer: CustomWebDrawer(),
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
