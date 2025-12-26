@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:portfolio/components/animated_card.dart';
 import 'package:portfolio/components/teal_container.dart';
 import 'package:portfolio/shared/extensions/sized_box.dart';
-import 'package:portfolio/shared/helpers/url_helper.dart';
 import 'package:portfolio/web/widgets/custom_web_appbar.dart';
 import 'package:portfolio/web/widgets/custom_web_drawer.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-import 'widgets/tabs_web.dart';
+import '../shared/constants/app_colors.dart';
 import '../shared/constants/app_text_style.dart';
 
 class AboutScreenWeb extends StatefulWidget {
@@ -23,7 +19,7 @@ class _AboutScreenWebState extends State<AboutScreenWeb> {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.white,
       drawer: CustomWebDrawer(),
       appBar: CustomWebAppBar(),
       body: ListView(
@@ -75,13 +71,13 @@ class _AboutScreenWebState extends State<AboutScreenWeb> {
                 ),
                 CircleAvatar(
                   radius: 147,
-                  backgroundColor: Colors.tealAccent,
+                  backgroundColor: AppColors.tealAccent,
                   child: CircleAvatar(
                     radius: 143,
-                    backgroundColor: Colors.black,
+                    backgroundColor: AppColors.black,
                     child: CircleAvatar(
                       radius: 140,
-                      backgroundColor: Colors.white,
+                      backgroundColor: AppColors.white,
                       child: Image.asset(
                         'assets/images/profile.png',
                         filterQuality: FilterQuality.high,

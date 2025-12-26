@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:portfolio/components/custom_button.dart';
 import 'package:portfolio/shared/constants/app_text_style.dart';
 import 'package:portfolio/shared/extensions/sized_box.dart';
 import 'package:portfolio/web/widgets/custom_web_drawer.dart';
-import 'package:url_launcher/url_launcher.dart';
-
 import '../components/custom_textfield.dart';
+import '../shared/constants/app_colors.dart';
 import 'widgets/tabs_web.dart';
 
 class ContactScreenWeb extends StatefulWidget {
@@ -27,8 +26,8 @@ class _ContactScreenWebState extends State<ContactScreenWeb> {
           return [
             SliverAppBar(
               expandedHeight: 350,
-              backgroundColor: Colors.white,
-              iconTheme: IconThemeData(color: Colors.black, size: 25),
+              backgroundColor: AppColors.white,
+              iconTheme: IconThemeData(color: AppColors.black, size: 25),
               flexibleSpace: FlexibleSpaceBar(
                 background: Image.asset(
                   'assets/images/contact_image.jpg',
@@ -104,22 +103,10 @@ class _ContactScreenWebState extends State<ContactScreenWeb> {
                 maxLines: 10,
               ),
               15.spaceY,
-              MaterialButton(
-                height: 60,
-                minWidth: width / 2.2,
-                color: Colors.tealAccent,
-                elevation: 20,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
+              CustomButton(
+                text: 'Submit',
                 onPressed: () {},
-                child: Text(
-                  'Submit',
-                  style: AppTextStyle.openSans(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                width: width / 2.2,
               ),
               15.spaceY,
             ],

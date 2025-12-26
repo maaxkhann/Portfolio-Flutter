@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:portfolio/components/animated_card.dart';
 import 'package:portfolio/shared/constants/app_text_style.dart';
 import 'package:portfolio/shared/extensions/sized_box.dart';
+import 'package:portfolio/web/widgets/custom_sliver_appbar_web.dart';
 import 'package:portfolio/web/widgets/custom_web_drawer.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-import 'widgets/tabs_web.dart';
 
 class WorksScreenWeb extends StatefulWidget {
   const WorksScreenWeb({super.key});
@@ -23,35 +20,7 @@ class _WorksScreenWebState extends State<WorksScreenWeb> {
       drawer: CustomWebDrawer(),
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
-          return [
-            SliverAppBar(
-              expandedHeight: 350,
-              backgroundColor: Colors.white,
-              iconTheme: IconThemeData(color: Colors.black, size: 25),
-              flexibleSpace: FlexibleSpaceBar(
-                background: Image.asset(
-                  'assets/images/works.jpg',
-                  fit: BoxFit.cover,
-                  filterQuality: FilterQuality.high,
-                ),
-              ),
-              title: Row(
-                children: [
-                  Spacer(flex: 3),
-                  TabsWeb(title: 'Home', route: '/'),
-                  Spacer(),
-                  TabsWeb(title: 'Works', route: '/works'),
-                  Spacer(),
-                  TabsWeb(title: 'Blog', route: '/blog'),
-                  Spacer(),
-                  TabsWeb(title: 'About', route: '/about'),
-                  Spacer(),
-                  TabsWeb(title: 'Contact', route: '/contact'),
-                  Spacer(),
-                ],
-              ),
-            ),
-          ];
+          return [CustomSliverAppBarWeb(imagePath: 'assets/images/works.jpg')];
         },
         body: ListView(
           children: [

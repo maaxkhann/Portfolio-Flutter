@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../shared/constants/app_colors.dart';
 import '../../shared/constants/app_text_style.dart';
 import '../../shared/helpers/url_helper.dart';
 
@@ -10,16 +11,17 @@ class CustomWebDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.white,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         spacing: 15,
         children: [
           CircleAvatar(
             radius: 72,
-            backgroundColor: Colors.tealAccent,
+            backgroundColor: AppColors.tealAccent,
             child: CircleAvatar(
               radius: 70,
-              backgroundColor: Colors.white,
+              backgroundColor: AppColors.white,
               backgroundImage: AssetImage('assets/images/profile.png'),
             ),
           ),

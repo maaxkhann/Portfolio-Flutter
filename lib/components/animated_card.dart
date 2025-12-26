@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../shared/constants/app_colors.dart';
 import '../shared/constants/app_text_style.dart';
 
 class AnimatedCard extends StatefulWidget {
@@ -55,9 +56,9 @@ class _AnimatedCardState extends State<AnimatedCard>
         elevation: 30,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
-          side: BorderSide(color: Colors.tealAccent),
+          side: BorderSide(color: AppColors.tealAccent),
         ),
-        shadowColor: Colors.tealAccent,
+        shadowColor: AppColors.tealAccent,
         child: Padding(
           padding: const EdgeInsets.all(15),
           child: Column(

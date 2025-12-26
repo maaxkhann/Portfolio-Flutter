@@ -5,6 +5,8 @@ import 'package:portfolio/mobile/widgets/custom_sliver_appbar_mob.dart';
 import 'package:portfolio/shared/constants/app_text_style.dart';
 import 'package:portfolio/shared/extensions/sized_box.dart';
 
+import '../shared/constants/app_colors.dart';
+
 class BlogScreenMobile extends StatefulWidget {
   const BlogScreenMobile({super.key});
 
@@ -30,14 +32,14 @@ class _BlogScreenMobileState extends State<BlogScreenMobile> {
                     padding: EdgeInsets.symmetric(horizontal: 4),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(3),
-                      color: Colors.black,
+                      color: AppColors.black,
                     ),
                     child: Text(
                       'Welcome to my blog',
                       style: AppTextStyle.abel(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: AppColors.white,
                       ),
                     ),
                   ),

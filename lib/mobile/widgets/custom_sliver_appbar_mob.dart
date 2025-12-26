@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../shared/constants/app_colors.dart';
+
 class CustomSliverAppBarMob extends StatelessWidget {
   final String imagePath;
   final Widget? title;
@@ -14,10 +16,10 @@ class CustomSliverAppBarMob extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.white,
       expandedHeight: expandedHeight,
       automaticallyImplyLeading: false,
-      iconTheme: IconThemeData(size: 35, color: Colors.black),
+      iconTheme: IconThemeData(size: 35, color: AppColors.black),
       flexibleSpace: FlexibleSpaceBar(
         title: title ?? SizedBox.shrink(),
         background: Image.asset(

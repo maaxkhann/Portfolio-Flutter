@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/shared/extensions/sized_box.dart';
 
+import '../shared/constants/app_colors.dart';
 import '../shared/constants/app_text_style.dart';
 
 class IntroText extends StatelessWidget {
@@ -16,8 +17,8 @@ class IntroText extends StatelessWidget {
       children: [
         Container(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-          decoration: const BoxDecoration(
-            color: Colors.tealAccent,
+          decoration: BoxDecoration(
+            color: AppColors.tealAccent,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20),
               topRight: Radius.circular(20),

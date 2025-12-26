@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:portfolio/components/custom_button.dart';
 import 'package:portfolio/mobile/widgets/custom_drawer_mobile.dart';
 import 'package:portfolio/mobile/widgets/custom_sliver_appbar_mob.dart';
 import 'package:portfolio/shared/constants/app_text_style.dart';
-import 'package:portfolio/shared/extensions/sized_box.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../components/custom_textfield.dart';
-import 'widgets/tabs_mobile.dart';
+import '../shared/constants/app_colors.dart';
 
 class ContactScreenMobile extends StatefulWidget {
   const ContactScreenMobile({super.key});
@@ -23,7 +20,7 @@ class _ContactScreenMobileState extends State<ContactScreenMobile> {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
       extendBodyBehindAppBar: true,
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.white,
       endDrawer: CustomDrawerMobile(),
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {

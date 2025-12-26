@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/components/custom_textfield.dart';
 import 'package:portfolio/components/teal_container.dart';
-import 'package:portfolio/mobile/widgets/tabs_mobile.dart';
+import 'package:portfolio/mobile/widgets/custom_drawer_mobile.dart';
 import 'package:portfolio/shared/constants/app_text_style.dart';
 import 'package:portfolio/shared/extensions/sized_box.dart';
-import 'package:portfolio/shared/helpers/url_helper.dart';
-import 'package:url_launcher/url_launcher.dart';
-
 import '../components/animated_card.dart';
 import '../components/contact_info.dart';
 import '../components/custom_button.dart';
 import '../components/intro_text.dart';
 import '../components/profile_avatar.dart';
+import '../shared/constants/app_colors.dart';
 
 class LandingPageMobile extends StatefulWidget {
   const LandingPageMobile({super.key});
@@ -27,77 +24,14 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
       extendBodyBehindAppBar: true,
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.white,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.black, size: 35),
+        iconTheme: IconThemeData(color: AppColors.black, size: 35),
       ),
-      endDrawer: Drawer(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            DrawerHeader(
-              child: Container(
-                // padding: EdgeInsets.only(bottom: 20),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(width: 2, color: Colors.black),
-                ),
-                child: Image.asset('assets/images/profile.png'),
-              ),
-            ),
-            TabsMobile(text: 'Home', route: '/'),
-            20.spaceY,
-            TabsMobile(text: 'Works', route: '/works'),
-            20.spaceY,
-            TabsMobile(text: 'Blog', route: '/blog'),
-            20.spaceY,
-            TabsMobile(text: 'About', route: '/about'),
-            20.spaceY,
-            TabsMobile(text: 'Contact', route: '/contact'),
-            40.spaceY,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                IconButton(
-                  onPressed: () async {
-                    UrlHelper.openUrl(
-                      'https://www.instagram.com/maaz.514?utm_source=qr&igsh=aHh1cDV0bDE2eW11',
-                    );
-                  },
-                  icon: SvgPicture.asset(
-                    'assets/images/instagram.svg',
-                    color: Colors.black,
-                    width: 35,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () async {
-                    UrlHelper.openUrl('https://x.com/MaazKha65069365');
-                  },
-                  icon: SvgPicture.asset(
-                    'assets/images/twitter.svg',
-                    color: Colors.black,
-                    width: 35,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () async {
-                    UrlHelper.openUrl('https://github.com/maaxkhann');
-                  },
-                  icon: SvgPicture.asset(
-                    'assets/images/github.svg',
-                    color: Colors.black,
-                    width: 35,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
+      endDrawer: CustomDrawerMobile(),
       body: ListView(
         children: [
           //Intro first section

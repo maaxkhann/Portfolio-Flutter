@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../shared/constants/app_colors.dart';
 import '../shared/constants/app_text_style.dart';
 
 class CustomButton extends StatelessWidget {
@@ -17,7 +18,7 @@ class CustomButton extends StatelessWidget {
     required this.onPressed,
     required this.width,
     this.height = 60,
-    this.backgroundColor = Colors.tealAccent,
+    this.backgroundColor = AppColors.tealAccent,
     this.borderRadius = const BorderRadius.all(Radius.circular(10)),
     this.textStyle,
     this.elevation = 20,

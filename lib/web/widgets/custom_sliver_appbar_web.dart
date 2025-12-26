@@ -3,17 +3,28 @@ import 'package:portfolio/web/widgets/tabs_web.dart';
 
 import '../../shared/constants/app_colors.dart';
 
-class CustomWebAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomWebAppBar({super.key});
+class CustomSliverAppBarWeb extends StatelessWidget {
+  final String imagePath;
+  final Widget? title;
+  const CustomSliverAppBarWeb({super.key, required this.imagePath, this.title});
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
+    return SliverAppBar(
+      expandedHeight: 350,
       backgroundColor: AppColors.white,
       iconTheme: IconThemeData(color: AppColors.black, size: 25),
+      flexibleSpace: FlexibleSpaceBar(
+        title: title ?? SizedBox.shrink(),
+        background: Image.asset(
+          imagePath,
+          fit: BoxFit.cover,
+          filterQuality: FilterQuality.high,
+        ),
+      ),
       title: Row(
         children: [
-          Spacer(flex: 2),
+          Spacer(flex: 3),
           TabsWeb(title: 'Home', route: '/'),
           Spacer(),
           TabsWeb(title: 'Works', route: '/works'),
@@ -28,7 +39,4 @@ class CustomWebAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
     );
   }
-
-  @override
-  Size get preferredSize => Size.fromHeight(70);
 }

@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:portfolio/components/animated_card.dart';
 import 'package:portfolio/components/profile_avatar.dart';
 import 'package:portfolio/mobile/widgets/custom_drawer_mobile.dart';
 import 'package:portfolio/shared/extensions/sized_box.dart';
-import 'package:url_launcher/url_launcher.dart';
-
 import '../components/teal_container.dart';
-import 'widgets/tabs_mobile.dart';
+import '../shared/constants/app_colors.dart';
 import '../shared/constants/app_text_style.dart';
 
 class AboutScreeenMobile extends StatefulWidget {
@@ -23,12 +20,12 @@ class _AboutScreeenMobileState extends State<AboutScreeenMobile> {
     return SafeArea(
       child: Scaffold(
         extendBodyBehindAppBar: true,
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.white,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           automaticallyImplyLeading: false,
           elevation: 0,
-          iconTheme: IconThemeData(color: Colors.black, size: 35),
+          iconTheme: IconThemeData(color: AppColors.black, size: 35),
         ),
         endDrawer: CustomDrawerMobile(),
         body: ListView(
@@ -36,7 +33,7 @@ class _AboutScreeenMobileState extends State<AboutScreeenMobile> {
           children: [
             CircleAvatar(
               radius: 117,
-              backgroundColor: Colors.tealAccent,
+              backgroundColor: AppColors.tealAccent,
               child: ProfileAvatar(outerRadius: 113, innerRadius: 110),
             ),
             20.spaceY,

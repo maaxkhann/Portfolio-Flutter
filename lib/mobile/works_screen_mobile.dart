@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:portfolio/components/animated_card.dart';
 import 'package:portfolio/mobile/widgets/custom_drawer_mobile.dart';
 import 'package:portfolio/mobile/widgets/custom_sliver_appbar_mob.dart';
 import 'package:portfolio/shared/constants/app_text_style.dart';
 import 'package:portfolio/shared/extensions/sized_box.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-import 'widgets/tabs_mobile.dart';
+import '../shared/constants/app_colors.dart';
 
 class WorksScreenMobile extends StatefulWidget {
   const WorksScreenMobile({super.key});
@@ -22,7 +20,7 @@ class _WorksScreenMobileState extends State<WorksScreenMobile> {
     return SafeArea(
       child: Scaffold(
         extendBodyBehindAppBar: true,
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.white,
         endDrawer: CustomDrawerMobile(),
         body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {

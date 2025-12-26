@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio/shared/constants/app_colors.dart';
 
 class AppTextStyle {
   static TextStyle heading({
     FontWeight fontWeight = FontWeight.w500,
     double fontSize = 20,
-    Color color = Colors.black,
+    Color color = AppColors.black,
     TextOverflow overflow = TextOverflow.ellipsis,
     bool underline = false,
   }) {
@@ -22,7 +23,7 @@ class AppTextStyle {
   static TextStyle body({
     FontWeight fontWeight = FontWeight.normal,
     double fontSize = 14,
-    Color color = Colors.black,
+    Color color = AppColors.black,
     TextOverflow overflow = TextOverflow.ellipsis,
     bool underline = false,
   }) {
@@ -40,7 +41,7 @@ class AppTextStyle {
   static TextStyle openSans({
     FontWeight fontWeight = FontWeight.normal,
     double fontSize = 14,
-    Color color = Colors.black,
+    Color color = AppColors.black,
     TextOverflow overflow = TextOverflow.ellipsis,
     bool underline = false,
   }) {
@@ -57,7 +58,7 @@ class AppTextStyle {
   static TextStyle abel({
     FontWeight fontWeight = FontWeight.normal,
     double fontSize = 14,
-    Color color = Colors.black,
+    Color color = AppColors.black,
     TextOverflow overflow = TextOverflow.ellipsis,
     bool underline = false,
   }) {

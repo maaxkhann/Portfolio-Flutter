@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../shared/constants/app_colors.dart';
 import '../shared/constants/app_text_style.dart';
 
 class TealContainer extends StatelessWidget {
@@ -12,7 +13,7 @@ class TealContainer extends StatelessWidget {
       padding: EdgeInsets.all(7),
       decoration: BoxDecoration(
         border: Border.all(
-          color: Colors.tealAccent,
+          color: AppColors.tealAccent,
           style: BorderStyle.solid,
           width: 2,
         ),

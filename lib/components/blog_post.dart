@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/shared/constants/app_colors.dart';
 import 'package:portfolio/shared/constants/app_text_style.dart';
 import 'package:portfolio/shared/extensions/sized_box.dart';
 
@@ -35,7 +36,7 @@ class _BlogPostState extends State<BlogPost> {
         border: Border.all(
           style: BorderStyle.solid,
           width: 1,
-          color: Colors.black,
+          color: AppColors.black,
         ),
       ),
       child: Column(
@@ -47,12 +48,15 @@ class _BlogPostState extends State<BlogPost> {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 5),
                 decoration: BoxDecoration(
-                  color: Colors.black,
+                  color: AppColors.black,
                   borderRadius: BorderRadius.circular(3),
                 ),
                 child: Text(
                   'Who is Dash?',
-                  style: AppTextStyle.abel(fontSize: 25, color: Colors.white),
+                  style: AppTextStyle.abel(
+                    fontSize: 25,
+                    color: AppColors.white,
+                  ),
                 ),
               ),
               IconButton(
@@ -63,7 +67,7 @@ class _BlogPostState extends State<BlogPost> {
                   isExpanded
                       ? Icons.arrow_circle_up_outlined
                       : Icons.arrow_drop_down_circle_outlined,
-                  color: Colors.black,
+                  color: AppColors.black,
                 ),
               ),
             ],
