@@ -139,8 +139,8 @@ class _LandingPageWebState extends State<LandingPageWeb> {
           ),
 
           //forth section
-          SizedBox(
-            height: height,
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 15),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -151,6 +151,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+                10.spaceY,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   spacing: 15,
@@ -165,7 +166,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                     ),
                   ],
                 ),
-
+                15.spaceY,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   spacing: 15,
@@ -180,11 +181,11 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                     ),
                   ],
                 ),
-
+                15.spaceY,
                 CustomTextField(
                   text: 'Message',
                   hintText: 'Please enter your message',
-                  containerWidth: width / 1.3,
+                  containerWidth: width / 1.27,
                   maxLines: 10,
                 ),
                 10.spaceY,
@@ -194,7 +195,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                   onPressed: () {},
                 ),
 
-                20.spaceY,
+                //  20.spaceY,
               ],
             ),
           ),

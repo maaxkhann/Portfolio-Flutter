@@ -6,6 +6,7 @@ import 'package:portfolio/mobile/widgets/custom_drawer_mobile.dart';
 import 'package:portfolio/shared/extensions/sized_box.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../components/teal_container.dart';
 import 'widgets/tabs_mobile.dart';
 import '../shared/constants/app_text_style.dart';
 
@@ -17,30 +18,6 @@ class AboutScreeenMobile extends StatefulWidget {
 }
 
 class _AboutScreeenMobileState extends State<AboutScreeenMobile> {
-  Widget tealContainer(String text) {
-    return Container(
-      padding: EdgeInsets.all(7),
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.tealAccent,
-          style: BorderStyle.solid,
-          width: 2,
-        ),
-        borderRadius: BorderRadius.circular(5),
-      ),
-      child: Text(text, style: AppTextStyle.openSans(fontSize: 15)),
-    );
-  }
-
-  Future openUrl(String url) async {
-    if (await canLaunchUrl(Uri.parse(url))) {
-      await launchUrl(Uri.parse(url));
-    } else {
-      throw 'Could not launch $url';
-    }
-    return;
-  }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -63,45 +40,43 @@ class _AboutScreeenMobileState extends State<AboutScreeenMobile> {
               child: ProfileAvatar(outerRadius: 113, innerRadius: 110),
             ),
             20.spaceY,
-            Padding(
-              padding: EdgeInsetsGeometry.symmetric(horizontal: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'About Me',
-                    style: AppTextStyle.openSans(
-                      fontSize: 35,
-                      fontWeight: FontWeight.bold,
-                    ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'About Me',
+                  style: AppTextStyle.openSans(
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold,
                   ),
-                  10.spaceY,
-                  Text(
-                    'Hello! I am Maaz Parvez, I specialize in flutter development',
-                    style: AppTextStyle.openSans(fontSize: 15),
-                  ),
-                  Text(
-                    'I Strive to ensure astounding performance with state of',
-                    style: AppTextStyle.openSans(fontSize: 15),
-                  ),
-                  Text(
-                    'The art security for Android, Ios, Web and Desktop ',
-                    style: AppTextStyle.openSans(fontSize: 15),
-                  ),
-                  15.spaceY,
-                  Wrap(
-                    spacing: 7,
-                    runSpacing: 7,
-                    children: [
-                      tealContainer('Flutter'),
-                      tealContainer('Firebase'),
-                      tealContainer('Android'),
-                      tealContainer('Windows'),
-                    ],
-                  ),
-                ],
-              ),
+                ),
+                10.spaceY,
+                Text(
+                  'Hello! I am Maaz Parvez, I specialize in flutter development',
+                  style: AppTextStyle.openSans(fontSize: 15),
+                ),
+                Text(
+                  'I Strive to ensure astounding performance with state of',
+                  style: AppTextStyle.openSans(fontSize: 15),
+                ),
+                Text(
+                  'The art security for Android, Ios, Web and Desktop ',
+                  style: AppTextStyle.openSans(fontSize: 15),
+                ),
+                15.spaceY,
+                Wrap(
+                  spacing: 7,
+                  runSpacing: 7,
+                  children: [
+                    TealContainer(text: 'Flutter'),
+                    TealContainer(text: 'Firebase'),
+                    TealContainer(text: 'Android'),
+                    TealContainer(text: 'IOS'),
+                    TealContainer(text: 'Windows'),
+                  ],
+                ),
+              ],
             ),
             40.spaceY,
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:portfolio/components/animated_card.dart';
 import 'package:portfolio/mobile/widgets/custom_drawer_mobile.dart';
+import 'package:portfolio/mobile/widgets/custom_sliver_appbar_mob.dart';
 import 'package:portfolio/shared/constants/app_text_style.dart';
 import 'package:portfolio/shared/extensions/sized_box.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -26,19 +27,7 @@ class _WorksScreenMobileState extends State<WorksScreenMobile> {
         body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
-              SliverAppBar(
-                backgroundColor: Colors.white,
-                expandedHeight: 300,
-                automaticallyImplyLeading: false,
-                iconTheme: IconThemeData(size: 35, color: Colors.black),
-                flexibleSpace: FlexibleSpaceBar(
-                  background: Image.asset(
-                    'assets/images/works.jpg',
-                    fit: BoxFit.cover,
-                    filterQuality: FilterQuality.high,
-                  ),
-                ),
-              ),
+              CustomSliverAppBarMob(imagePath: 'assets/images/works.jpg'),
             ];
           },
           body: ListView(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/components/blog_post.dart';
 import 'package:portfolio/mobile/widgets/custom_drawer_mobile.dart';
+import 'package:portfolio/mobile/widgets/custom_sliver_appbar_mob.dart';
 import 'package:portfolio/shared/constants/app_text_style.dart';
 import 'package:portfolio/shared/extensions/sized_box.dart';
 
@@ -21,62 +22,53 @@ class _BlogScreenMobileState extends State<BlogScreenMobile> {
           child: NestedScrollView(
             headerSliverBuilder: (context, isInnerChildScroll) {
               return [
-                SliverAppBar(
-                  backgroundColor: Colors.white,
-                  automaticallyImplyLeading: false,
-                  iconTheme: IconThemeData(size: 35, color: Colors.black),
-                  flexibleSpace: FlexibleSpaceBar(
-                    centerTitle: true,
-                    title: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 4),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(3),
-                        color: Colors.black,
-                      ),
-                      child: Text(
-                        'Welcome to my blog',
-                        style: AppTextStyle.abel(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
+                CustomSliverAppBarMob(
+                  imagePath: 'assets/images/blog.jpg',
+                  expandedHeight: 350,
+                  title: Container(
+                    margin: EdgeInsets.symmetric(horizontal: 4),
+                    padding: EdgeInsets.symmetric(horizontal: 4),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(3),
+                      color: Colors.black,
                     ),
-                    background: Image.asset(
-                      'assets/images/blog.jpg',
-                      filterQuality: FilterQuality.high,
-                      fit: BoxFit.cover,
+                    child: Text(
+                      'Welcome to my blog',
+                      style: AppTextStyle.abel(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
-                  expandedHeight: 400,
                 ),
               ];
             },
             body: ListView(
               children: [
                 BlogPost(
-                  leftPadding: 70,
-                  rightPadding: 70,
+                  leftPadding: 40,
+                  rightPadding: 40,
                   topPadding: 40,
-                  allSidePadding: 20,
+                  allSidePadding: 12,
                 ),
                 BlogPost(
-                  leftPadding: 70,
-                  rightPadding: 70,
+                  leftPadding: 40,
+                  rightPadding: 40,
                   topPadding: 40,
-                  allSidePadding: 20,
+                  allSidePadding: 12,
                 ),
                 BlogPost(
-                  leftPadding: 70,
-                  rightPadding: 70,
+                  leftPadding: 40,
+                  rightPadding: 40,
                   topPadding: 40,
-                  allSidePadding: 20,
+                  allSidePadding: 12,
                 ),
                 BlogPost(
-                  leftPadding: 70,
-                  rightPadding: 70,
+                  leftPadding: 40,
+                  rightPadding: 40,
                   topPadding: 40,
-                  allSidePadding: 20,
+                  allSidePadding: 12,
                 ),
                 20.spaceY,
               ],

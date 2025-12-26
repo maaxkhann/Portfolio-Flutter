@@ -204,27 +204,27 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
                   ),
                   CustomTextField(
                     text: 'First Name',
-                    containerWidth: width / 1.4,
+                    containerWidth: width / 1.35,
                     hintText: 'Please type first name',
                   ),
                   CustomTextField(
                     text: 'Last Name',
-                    containerWidth: width / 1.4,
+                    containerWidth: width / 1.35,
                     hintText: 'Please type last name',
                   ),
                   CustomTextField(
                     text: 'Email',
-                    containerWidth: width / 1.4,
+                    containerWidth: width / 1.35,
                     hintText: 'Please type email address',
                   ),
                   CustomTextField(
                     text: 'Phone number',
-                    containerWidth: width / 1.4,
+                    containerWidth: width / 1.35,
                     hintText: 'Please type phone number',
                   ),
                   CustomTextField(
                     text: 'Message',
-                    containerWidth: width / 1.4,
+                    containerWidth: width / 1.35,
                     hintText: 'Please type message',
                     maxLines: 10,
                   ),
