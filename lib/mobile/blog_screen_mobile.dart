@@ -27,6 +27,7 @@ class _BlogScreenMobileState extends State<BlogScreenMobile> {
                 CustomSliverAppBarMob(
                   imagePath: 'assets/images/blog.jpg',
                   expandedHeight: 350,
+                  isBack: true,
                   title: Container(
                     margin: EdgeInsets.symmetric(horizontal: 4),
                     padding: EdgeInsets.symmetric(horizontal: 4),

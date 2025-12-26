@@ -22,157 +22,159 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      backgroundColor: AppColors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        automaticallyImplyLeading: false,
-        elevation: 0,
-        iconTheme: IconThemeData(color: AppColors.black, size: 35),
-      ),
-      endDrawer: CustomDrawerMobile(),
-      body: ListView(
-        children: [
-          //Intro first section
-          Column(
-            children: [
-              const ProfileAvatar(outerRadius: 117, innerRadius: 110),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  children: [
-                    25.spaceY,
-                    const IntroText(nameSize: 40, roleSize: 20),
-                    15.spaceY,
-                    const ContactInfo(isCentered: true),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          90.spaceY,
-          //About me second section
-          Padding(
-            padding: EdgeInsetsGeometry.symmetric(horizontal: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
+    return SafeArea(
+      child: Scaffold(
+        extendBodyBehindAppBar: true,
+        backgroundColor: AppColors.white,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          automaticallyImplyLeading: false,
+          elevation: 0,
+          iconTheme: IconThemeData(color: AppColors.black, size: 35),
+        ),
+        endDrawer: CustomDrawerMobile(),
+        body: ListView(
+          children: [
+            //Intro first section
+            Column(
               children: [
-                Text(
-                  'About Me',
-                  style: AppTextStyle.openSans(
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold,
+                const ProfileAvatar(outerRadius: 117, innerRadius: 110),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    children: [
+                      25.spaceY,
+                      const IntroText(nameSize: 40, roleSize: 20),
+                      15.spaceY,
+                      const ContactInfo(isCentered: true),
+                    ],
                   ),
-                ),
-                Text(
-                  'Hello! I am Maaz Parvez, I specialize in flutter development',
-                  style: AppTextStyle.openSans(fontSize: 15),
-                ),
-                Text(
-                  'I Strive to ensure astounding performance with state of',
-                  style: AppTextStyle.openSans(fontSize: 15),
-                ),
-                Text(
-                  'The art security for Android, Ios, Web and Desktop ',
-                  style: AppTextStyle.openSans(fontSize: 15),
-                ),
-                10.spaceY,
-                Wrap(
-                  spacing: 7,
-                  runSpacing: 7,
-                  children: [
-                    TealContainer(text: 'Flutter'),
-                    TealContainer(text: 'Firebase'),
-                    TealContainer(text: 'Android'),
-                    TealContainer(text: 'Windows'),
-                  ],
                 ),
               ],
             ),
-          ),
-          60.spaceY,
-          //What I do third section
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                'What I do?',
-                style: AppTextStyle.openSans(
-                  fontSize: 35,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              AnimatedCard(
-                imagePath: 'assets/images/webL.png',
-                text: 'Web development',
-                width: 300,
-              ),
-              35.spaceY,
-              AnimatedCard(
-                imagePath: 'assets/images/app.png',
-                text: 'App development',
-                reverse: true,
-                width: 300,
-              ),
-              35.spaceY,
-              AnimatedCard(
-                imagePath: 'assets/images/firebase.png',
-                text: 'Firebase',
-                width: 300,
-              ),
-              60.spaceY,
-              //  Contact fourth section
-              Wrap(
-                runSpacing: 20,
-                spacing: 20,
-                alignment: WrapAlignment.center,
+            90.spaceY,
+            //About me second section
+            Padding(
+              padding: EdgeInsetsGeometry.symmetric(horizontal: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Contact me',
+                    'About Me',
                     style: AppTextStyle.openSans(
                       fontSize: 35,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  CustomTextField(
-                    text: 'First Name',
-                    containerWidth: width / 1.35,
-                    hintText: 'Please type first name',
+                  Text(
+                    'Hello! I am Maaz Parvez, I specialize in flutter development',
+                    style: AppTextStyle.openSans(fontSize: 15),
                   ),
-                  CustomTextField(
-                    text: 'Last Name',
-                    containerWidth: width / 1.35,
-                    hintText: 'Please type last name',
+                  Text(
+                    'I Strive to ensure astounding performance with state of',
+                    style: AppTextStyle.openSans(fontSize: 15),
                   ),
-                  CustomTextField(
-                    text: 'Email',
-                    containerWidth: width / 1.35,
-                    hintText: 'Please type email address',
+                  Text(
+                    'The art security for Android, Ios, Web and Desktop ',
+                    style: AppTextStyle.openSans(fontSize: 15),
                   ),
-                  CustomTextField(
-                    text: 'Phone number',
-                    containerWidth: width / 1.35,
-                    hintText: 'Please type phone number',
-                  ),
-                  CustomTextField(
-                    text: 'Message',
-                    containerWidth: width / 1.35,
-                    hintText: 'Please type message',
-                    maxLines: 10,
-                  ),
-                  CustomButton(
-                    width: width / 2.2,
-                    text: 'Submit',
-                    onPressed: () {},
+                  10.spaceY,
+                  Wrap(
+                    spacing: 7,
+                    runSpacing: 7,
+                    children: [
+                      TealContainer(text: 'Flutter'),
+                      TealContainer(text: 'Firebase'),
+                      TealContainer(text: 'Android'),
+                      TealContainer(text: 'Windows'),
+                    ],
                   ),
                 ],
               ),
-              20.spaceY,
-            ],
-          ),
-        ],
+            ),
+            60.spaceY,
+            //What I do third section
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  'What I do?',
+                  style: AppTextStyle.openSans(
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                AnimatedCard(
+                  imagePath: 'assets/images/webL.png',
+                  text: 'Web development',
+                  width: 300,
+                ),
+                35.spaceY,
+                AnimatedCard(
+                  imagePath: 'assets/images/app.png',
+                  text: 'App development',
+                  reverse: true,
+                  width: 300,
+                ),
+                35.spaceY,
+                AnimatedCard(
+                  imagePath: 'assets/images/firebase.png',
+                  text: 'Firebase',
+                  width: 300,
+                ),
+                60.spaceY,
+                //  Contact fourth section
+                Wrap(
+                  runSpacing: 20,
+                  spacing: 20,
+                  alignment: WrapAlignment.center,
+                  children: [
+                    Text(
+                      'Contact me',
+                      style: AppTextStyle.openSans(
+                        fontSize: 35,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    CustomTextField(
+                      text: 'First Name',
+                      containerWidth: width / 1.35,
+                      hintText: 'Please type first name',
+                    ),
+                    CustomTextField(
+                      text: 'Last Name',
+                      containerWidth: width / 1.35,
+                      hintText: 'Please type last name',
+                    ),
+                    CustomTextField(
+                      text: 'Email',
+                      containerWidth: width / 1.35,
+                      hintText: 'Please type email address',
+                    ),
+                    CustomTextField(
+                      text: 'Phone number',
+                      containerWidth: width / 1.35,
+                      hintText: 'Please type phone number',
+                    ),
+                    CustomTextField(
+                      text: 'Message',
+                      containerWidth: width / 1.35,
+                      hintText: 'Please type message',
+                      maxLines: 10,
+                    ),
+                    CustomButton(
+                      width: width / 2.2,
+                      text: 'Submit',
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
+                20.spaceY,
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

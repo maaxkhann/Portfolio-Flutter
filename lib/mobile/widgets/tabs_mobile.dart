@@ -15,13 +15,21 @@ class TabsMobile extends StatefulWidget {
 class _TabsMobileState extends State<TabsMobile> {
   @override
   Widget build(BuildContext context) {
+    final String? currentRoute = ModalRoute.of(context)?.settings.name;
+    final bool isCurrentPage = currentRoute == widget.route;
     return MaterialButton(
       height: 50,
       minWidth: 200,
       elevation: 20,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
       color: AppColors.black,
-      onPressed: () => Navigator.pushNamed(context, widget.route),
+      onPressed: () {
+        if (isCurrentPage) {
+          Navigator.pop(context);
+        } else {
+          Navigator.pushNamed(context, widget.route);
+        }
+      },
       child: Text(
         widget.text,
         style: GoogleFonts.openSans(fontSize: 20, color: AppColors.white),

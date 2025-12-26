@@ -25,7 +25,10 @@ class _ContactScreenMobileState extends State<ContactScreenMobile> {
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
-            CustomSliverAppBarMob(imagePath: 'assets/images/contact_image.jpg'),
+            CustomSliverAppBarMob(
+              imagePath: 'assets/images/contact_image.jpg',
+              isBack: true,
+            ),
           ];
         },
         body: SingleChildScrollView(

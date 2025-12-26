@@ -99,7 +99,7 @@ class _ContactScreenWebState extends State<ContactScreenWeb> {
               CustomTextField(
                 text: 'Message',
                 hintText: 'Please enter your message',
-                containerWidth: width / 1.3,
+                containerWidth: width / 1.27,
                 maxLines: 10,
               ),
               15.spaceY,

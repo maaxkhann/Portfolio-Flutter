@@ -16,8 +16,14 @@ class _TabsWebState extends State<TabsWeb> {
   bool isSelected = false;
   @override
   Widget build(BuildContext context) {
+    final String? currentRoute = ModalRoute.of(context)?.settings.name;
+    final bool isCurrentPage = currentRoute == widget.route;
     return GestureDetector(
-      onTap: () => Navigator.pushNamed(context, widget.route),
+      onTap: () {
+        if (!isCurrentPage) {
+          Navigator.pushNamed(context, widget.route);
+        }
+      },
       child: MouseRegion(
         onEnter: (_) => setState(() {
           isSelected = true;

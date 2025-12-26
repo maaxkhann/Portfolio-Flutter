@@ -23,7 +23,6 @@ class _AboutScreeenMobileState extends State<AboutScreeenMobile> {
         backgroundColor: AppColors.white,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          automaticallyImplyLeading: false,
           elevation: 0,
           iconTheme: IconThemeData(color: AppColors.black, size: 35),
         ),

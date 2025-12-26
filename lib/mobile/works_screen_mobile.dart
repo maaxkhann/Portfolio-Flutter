@@ -25,7 +25,10 @@ class _WorksScreenMobileState extends State<WorksScreenMobile> {
         body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
-              CustomSliverAppBarMob(imagePath: 'assets/images/works.jpg'),
+              CustomSliverAppBarMob(
+                imagePath: 'assets/images/works.jpg',
+                isBack: true,
+              ),
             ];
           },
           body: ListView(
