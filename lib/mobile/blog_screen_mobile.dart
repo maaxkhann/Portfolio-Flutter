@@ -1,9 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/components/blog_post.dart';
 import 'package:portfolio/mobile/widgets/custom_drawer_mobile.dart';
 import 'package:portfolio/mobile/widgets/custom_sliver_appbar_mob.dart';
 import 'package:portfolio/shared/constants/app_text_style.dart';
-import 'package:portfolio/shared/extensions/sized_box.dart';
 
 import '../shared/constants/app_colors.dart';
 
@@ -47,34 +47,34 @@ class _BlogScreenMobileState extends State<BlogScreenMobile> {
                 ),
               ];
             },
-            body: ListView(
-              children: [
-                BlogPost(
-                  leftPadding: 40,
-                  rightPadding: 40,
-                  topPadding: 40,
-                  allSidePadding: 12,
-                ),
-                BlogPost(
-                  leftPadding: 40,
-                  rightPadding: 40,
-                  topPadding: 40,
-                  allSidePadding: 12,
-                ),
-                BlogPost(
-                  leftPadding: 40,
-                  rightPadding: 40,
-                  topPadding: 40,
-                  allSidePadding: 12,
-                ),
-                BlogPost(
-                  leftPadding: 40,
-                  rightPadding: 40,
-                  topPadding: 40,
-                  allSidePadding: 12,
-                ),
-                20.spaceY,
-              ],
+            body: StreamBuilder(
+              stream: FirebaseFirestore.instance
+                  .collection('articles')
+                  .snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                    itemCount: snapshot.data?.docs.length,
+                    itemBuilder: (context, index) {
+                      DocumentSnapshot docSnapshot = snapshot.data!.docs[index];
+                      return BlogPost(
+                        title: docSnapshot['title'],
+                        body: docSnapshot['body'],
+                      );
+                    },
+                  );
+                } else if (snapshot.connectionState ==
+                    ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else {
+                  return Center(
+                    child: Text(
+                      'No data',
+                      style: AppTextStyle.openSans(fontSize: 16),
+                    ),
+                  );
+                }
+              },
             ),
           ),
         ),

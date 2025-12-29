@@ -4,11 +4,15 @@ import 'package:portfolio/shared/constants/app_text_style.dart';
 import 'package:portfolio/shared/extensions/sized_box.dart';
 
 class BlogPost extends StatefulWidget {
+  final String title;
+  final String body;
   final double leftPadding;
   final double rightPadding;
   final double topPadding;
   final double allSidePadding;
   const BlogPost({
+    required this.title,
+    required this.body,
     super.key,
     this.leftPadding = 20,
     this.rightPadding = 20,
@@ -52,7 +56,7 @@ class _BlogPostState extends State<BlogPost> {
                   borderRadius: BorderRadius.circular(3),
                 ),
                 child: Text(
-                  'Who is Dash?',
+                  widget.title,
                   style: AppTextStyle.abel(
                     fontSize: 25,
                     color: AppColors.white,
@@ -74,11 +78,7 @@ class _BlogPostState extends State<BlogPost> {
           ),
           7.spaceY,
           Text(
-            'Hi, I’m Jaime Wren, a long-time developer tooling software engineer on the Flutter team. '
-            'I’ve seen many shifts in the software industry over the years, but the whole industry has '
-            'just stepped into a new Wild West at breakneck speed and this is both exciting and '
-            'nerve-wracking. In my opinion, we developers are complicated creatures driven by two forces: '
-            'the need for productivity with our tasks and our inherent joy of programming itself.',
+            widget.body,
             style: AppTextStyle.openSans(fontSize: 15),
             maxLines: isExpanded ? null : 3,
             overflow: isExpanded ? TextOverflow.visible : TextOverflow.ellipsis,

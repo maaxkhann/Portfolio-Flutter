@@ -20,6 +20,12 @@ class LandingPageWeb extends StatefulWidget {
 }
 
 class _LandingPageWebState extends State<LandingPageWeb> {
+  final firstNameCont = TextEditingController();
+  final lastNameCont = TextEditingController();
+  final emailCont = TextEditingController();
+  final phoneCont = TextEditingController();
+  final msgCont = TextEditingController();
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -141,62 +147,97 @@ class _LandingPageWebState extends State<LandingPageWeb> {
           //forth section
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 15),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  'Contact me',
-                  style: AppTextStyle.openSans(
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
+            child: Form(
+              key: formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    'Contact me',
+                    style: AppTextStyle.openSans(
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                10.spaceY,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  spacing: 15,
-                  children: [
-                    CustomTextField(
-                      text: 'First Name',
-                      hintText: 'Please enter your first name',
-                    ),
-                    CustomTextField(
-                      text: 'Last Name',
-                      hintText: 'Please enter your last name',
-                    ),
-                  ],
-                ),
-                15.spaceY,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  spacing: 15,
-                  children: [
-                    CustomTextField(
-                      text: 'Email',
-                      hintText: 'Please enter your email address',
-                    ),
-                    CustomTextField(
-                      text: 'Phone number',
-                      hintText: 'Please enter your phone number',
-                    ),
-                  ],
-                ),
-                15.spaceY,
-                CustomTextField(
-                  text: 'Message',
-                  hintText: 'Please enter your message',
-                  containerWidth: width / 1.27,
-                  maxLines: 10,
-                ),
-                10.spaceY,
-                CustomButton(
-                  width: width / 2.2,
-                  text: 'Submit',
-                  onPressed: () {},
-                ),
+                  10.spaceY,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    spacing: 15,
+                    children: [
+                      CustomTextField(
+                        controller: firstNameCont,
+                        text: 'First Name',
+                        hintText: 'Please enter your first name',
+                        validator: (text) {
+                          if (text.toString().isEmpty) {
+                            return 'First name is required';
+                          }
+                        },
+                      ),
+                      CustomTextField(
+                        controller: lastNameCont,
+                        text: 'Last Name',
+                        hintText: 'Please enter your last name',
+                        validator: (text) {
+                          if (text.toString().isEmpty) {
+                            return 'Last name is required';
+                          }
+                        },
+                      ),
+                    ],
+                  ),
+                  15.spaceY,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    spacing: 15,
+                    children: [
+                      CustomTextField(
+                        controller: emailCont,
+                        text: 'Email',
+                        hintText: 'Please enter your email address',
+                        validator: (text) {
+                          if (text.toString().isEmpty) {
+                            return 'Email is required';
+                          }
+                        },
+                      ),
+                      CustomTextField(
+                        controller: phoneCont,
+                        text: 'Phone number',
+                        hintText: 'Please enter your phone number',
+                        validator: (text) {
+                          if (text.toString().isEmpty) {
+                            return 'Phone number is required';
+                          }
+                        },
+                      ),
+                    ],
+                  ),
+                  15.spaceY,
+                  CustomTextField(
+                    controller: msgCont,
+                    text: 'Message',
+                    hintText: 'Please enter your message',
+                    containerWidth: width / 1.27,
+                    maxLines: 10,
+                    validator: (text) {
+                      if (text.toString().isEmpty) {
+                        return 'Message is required';
+                      }
+                    },
+                  ),
+                  10.spaceY,
+                  CustomButton(
+                    width: width / 2.2,
+                    text: 'Submit',
+                    onPressed: () {
+                      formKey.currentState!.validate();
+                    },
+                  ),
 
-                //  20.spaceY,
-              ],
+                  //  20.spaceY,
+                ],
+              ),
             ),
           ),
         ],
