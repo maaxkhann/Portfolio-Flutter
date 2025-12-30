@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/shared/constants/app_text_style.dart';
 import 'package:portfolio/shared/extensions/sized_box.dart';
@@ -230,8 +231,29 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                   CustomButton(
                     width: width / 2.2,
                     text: 'Submit',
-                    onPressed: () {
-                      formKey.currentState!.validate();
+                    onPressed: () async {
+                      if (formKey.currentState!.validate()) {
+                        CollectionReference collectionRef = FirebaseFirestore
+                            .instance
+                            .collection('messages');
+                        await collectionRef.add({
+                          'first name': firstNameCont.text,
+                          'last name': lastNameCont.text,
+                          'email': emailCont.text,
+                          'phone number': phoneCont.text,
+                          'message': msgCont.text,
+                        });
+                        formKey.currentState!.reset();
+                        showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            title: Text(
+                              'Message submitted',
+                              style: AppTextStyle.openSans(fontSize: 16),
+                            ),
+                          ),
+                        );
+                      }
                     },
                   ),
 
