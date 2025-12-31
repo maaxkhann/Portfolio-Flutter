@@ -1,13 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio/components/custom_textfield.dart';
 import 'package:portfolio/components/teal_container.dart';
+import 'package:portfolio/mobile/widgets/contact_form_mobile.dart';
 import 'package:portfolio/mobile/widgets/custom_drawer_mobile.dart';
 import 'package:portfolio/shared/constants/app_text_style.dart';
 import 'package:portfolio/shared/extensions/sized_box.dart';
+
 import '../components/animated_card.dart';
 import '../components/contact_info.dart';
-import '../components/custom_button.dart';
 import '../components/intro_text.dart';
 import '../components/profile_avatar.dart';
 import '../shared/constants/app_colors.dart';
@@ -20,15 +19,8 @@ class LandingPageMobile extends StatefulWidget {
 }
 
 class _LandingPageMobileState extends State<LandingPageMobile> {
-  final firstNameCont = TextEditingController();
-  final lastNameCont = TextEditingController();
-  final emailCont = TextEditingController();
-  final phoneCont = TextEditingController();
-  final msgCont = TextEditingController();
-  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         extendBodyBehindAppBar: true,
@@ -132,79 +124,8 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
                 ),
                 60.spaceY,
                 //  Contact fourth section
-                Form(
-                  key: formKey,
-                  child: Wrap(
-                    runSpacing: 20,
-                    spacing: 20,
-                    alignment: WrapAlignment.center,
-                    children: [
-                      Text(
-                        'Contact me',
-                        style: AppTextStyle.openSans(
-                          fontSize: 35,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      CustomTextField(
-                        text: 'First Name',
-                        containerWidth: width / 1.35,
-                        hintText: 'Please type first name',
-                      ),
-                      CustomTextField(
-                        text: 'Last Name',
-                        containerWidth: width / 1.35,
-                        hintText: 'Please type last name',
-                      ),
-                      CustomTextField(
-                        text: 'Email',
-                        containerWidth: width / 1.35,
-                        hintText: 'Please type email address',
-                      ),
-                      CustomTextField(
-                        text: 'Phone number',
-                        containerWidth: width / 1.35,
-                        hintText: 'Please type phone number',
-                      ),
-                      CustomTextField(
-                        text: 'Message',
-                        containerWidth: width / 1.35,
-                        hintText: 'Please type message',
-                        maxLines: 10,
-                      ),
-                      CustomButton(
-                        width: width / 2.2,
-                        text: 'Submit',
-                        onPressed: () async {
-                          if (formKey.currentState!.validate()) {
-                            CollectionReference collectionRef =
-                                FirebaseFirestore.instance.collection(
-                                  'messages',
-                                );
-                            await collectionRef.add({
-                              'first name': firstNameCont.text,
-                              'last name': lastNameCont.text,
-                              'email': emailCont.text,
-                              'phone number': phoneCont.text,
-                              'message': msgCont.text,
-                            });
-                            formKey.currentState!.reset();
-                            showDialog(
-                              context: context,
-                              builder: (context) => AlertDialog(
-                                title: Text(
-                                  'Message submitted',
-                                  style: AppTextStyle.openSans(fontSize: 16),
-                                ),
-                              ),
-                            );
-                          }
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-                20.spaceY,
+                ContactFormMobile(),
+                15.spaceY,
               ],
             ),
           ],
