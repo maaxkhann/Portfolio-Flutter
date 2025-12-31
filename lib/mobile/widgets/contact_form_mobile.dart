@@ -102,27 +102,33 @@ class _ContactFormMobileState extends State<ContactFormMobile> {
             width: width / 2.2,
             text: 'Submit',
             onPressed: () async {
-              if (formKey.currentState!.validate()) {
-                CollectionReference collectionRef = FirebaseFirestore.instance
-                    .collection('messages');
-                await collectionRef.add({
-                  'first name': firstNameCont.text,
-                  'last name': lastNameCont.text,
-                  'email': emailCont.text,
-                  'phone number': phoneCont.text,
-                  'message': msgCont.text,
-                });
-                formKey.currentState!.reset();
-                showDialog(
-                  context: context,
-                  builder: (context) => AlertDialog(
-                    title: Text(
-                      'Message submitted',
-                      style: AppTextStyle.openSans(fontSize: 16),
-                    ),
+              if (!formKey.currentState!.validate()) return;
+
+              final collectionRef = FirebaseFirestore.instance.collection(
+                'messages',
+              );
+
+              await collectionRef.add({
+                'first name': firstNameCont.text,
+                'last name': lastNameCont.text,
+                'email': emailCont.text,
+                'phone number': phoneCont.text,
+                'message': msgCont.text,
+              });
+
+              if (!context.mounted) return;
+
+              formKey.currentState!.reset();
+
+              showDialog(
+                context: context,
+                builder: (_) => AlertDialog(
+                  title: Text(
+                    'Message submitted',
+                    style: AppTextStyle.openSans(fontSize: 16),
                   ),
-                );
-              }
+                ),
+              );
             },
           ),
         ],
